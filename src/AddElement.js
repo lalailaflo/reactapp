@@ -7,11 +7,15 @@ class AddElement extends Component{
         let formData = {
             name: document.getElementById('txtName').value
         } 
+        
         fetch(theUrl,{
+            headers: {
+                'content-type': 'application/json'
+              },
             method:'POST',
-            body:formData
+            body:JSON.stringify(formData)
         }).then((data)=>{
-            alert('elemento creado');
+            console.log(data);
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);
           });
