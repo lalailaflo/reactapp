@@ -1,0 +1,8 @@
+.listado {
+    display: flex;
+    list-style: none;
+    margin: 20px 0;
+}
+.listado li {
+    flex-grow: 1;
+}

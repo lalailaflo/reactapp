@@ -12,6 +12,7 @@ class App extends Component {
       <h2>Listado de Elementos</h2>
       <AddElement/>
       <div id="listado"><ListElements/></div>
+      <form id="formEdit"></form>
     </div>
     )
   }
