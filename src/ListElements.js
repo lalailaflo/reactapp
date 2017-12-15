@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import RemoveElement from './RemoveElement.js';
+import UpdateElement from './UpdateElement.js';
+import './ListElements.css';
 const theUrl = 'http://localhost:3001/tasks';
 
 class ListElements extends Component {
@@ -30,9 +33,10 @@ class ListElements extends Component {
   render() {
   
     return (
-      <ul>
+      <ul className="listado">
       {this.state.tasks.map(function(listValue,index){
-        return <li key={index}>{listValue.name}</li>;
+        let ide = listValue._id;
+        return <li key={index}>{listValue.name}<span><RemoveElement elId={ide}/></span><span><UpdateElement elId={ide}/></span></li>;
       })}
     </ul>
       
