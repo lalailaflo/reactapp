@@ -17,6 +17,8 @@ class UpdateElement extends Component{
             body:JSON.stringify(formData)
         }).then((data)=>{
             console.log(data);
+            document.getElementById('formEdit').innerHTML = '';
+            this.props.updateState();
   
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);

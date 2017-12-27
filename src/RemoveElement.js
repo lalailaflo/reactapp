@@ -9,6 +9,7 @@ class RemoveElement extends Component{
             method:'DELETE'        
         }).then((data)=>{
             response => response.json();
+            this.props.updateState();
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);
           });
