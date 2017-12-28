@@ -27,7 +27,7 @@ class AddElement extends Component{
         }).then((data)=>{
             console.log(data);
             this.setState({addTask:false,text:''});
-            //this.props.updateState();
+            this.props.updateList();
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);
           });
@@ -54,7 +54,7 @@ class AddElement extends Component{
         return (
             
             <div>
-             <button type="button" onClick={this.toggleTask}>toggle</button>   
+             <button type="button" onClick={this.toggleTask}>Agregar tarea</button>   
             
             {this.renderForm()}
             </div>
