@@ -1,11 +1,21 @@
 import React, {Component} from 'react';
 
 class AddElement extends Component{
+    constructor(props){
+        super(props)
+        this.state = { 
+            addTask: false,
+            text:''
+        };
+        this.toggleTask = this.toggleTask.bind(this);
+        this.addEl = this.addEl.bind(this);
+        this.onTextChanged = this.onTextChanged.bind(this);
+        this.renderForm = this.renderForm.bind(this);
+    }
     addEl(){
-        
         let theUrl = 'http://localhost:3001/tasks';
         let formData = {
-            name: document.getElementById('txtName').value
+            name: this.state.text
         } 
         
         fetch(theUrl,{
@@ -16,27 +26,37 @@ class AddElement extends Component{
             body:JSON.stringify(formData)
         }).then((data)=>{
             console.log(data);
+            this.setState({addTask:false,text:''});
+            this.props.updateList();
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);
           });
         
     }
-    addForm(){
-        let el = document.getElementById('formAdd');
-        let input= document.createElement('input');
-        let boton = document.createElement('button');
-        input.id = 'txtName';
-        boton.innerText = 'Agregar';
-        boton.type = 'button';
-        boton.addEventListener('click',this.addEl);
-        el.appendChild(input);
-        el.appendChild(boton);
+    toggleTask(){
+        const addTask = !this.state.addTask;
+        this.setState({ addTask });
+    }
+    onTextChanged(e){
+        this.setState({text:e.target.value});
+    }
+    renderForm(){
+        if(this.state.addTask){
+            return (
+            <form id="formAdd">
+                <input id="txtName" onChange={this.onTextChanged}/>
+                <button type="button" onClick={this.addEl}>Agregar</button>
+            </form>);
+        }
     }
     render(){
+        
         return (
+            
             <div>
-            <button id="btn-addForm" onClick={this.addForm.bind(this)}>Agregar elemento</button>
-            <form id="formAdd"></form>
+             <button type="button" onClick={this.toggleTask}>Agregar tarea</button>   
+            
+            {this.renderForm()}
             </div>
         )
     }

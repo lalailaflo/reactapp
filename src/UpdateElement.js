@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
+
 class UpdateElement extends Component{
+
     editEl(){
         
         let id= this.props.elId;
@@ -17,6 +19,9 @@ class UpdateElement extends Component{
             body:JSON.stringify(formData)
         }).then((data)=>{
             console.log(data);
+            document.getElementById('formEdit').innerHTML = '';
+            //this.props.updateState();
+            this.props.updateList();
   
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);

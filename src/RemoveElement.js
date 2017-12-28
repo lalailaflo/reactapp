@@ -7,8 +7,8 @@ class RemoveElement extends Component{
         
         fetch(theUrl,{
             method:'DELETE'        
-        }).then((data)=>{
-            response => response.json();
+        }).then((data) => {
+            this.props.updateList();
         }).catch(function(err) {
             console.log('Fetch Error :-S', err);
           });
