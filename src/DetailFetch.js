@@ -8,7 +8,7 @@ class DetailFetch extends Component {
         this.state = { task: {} };
         this.renderFetch = this.renderFetch.bind(this);
     }
-    componentWillMount() {
+    componentDidMount() {
         this.renderFetch();
     }
     renderFetch() {
